@@ -1,7 +1,9 @@
-#!/usr/bin/env python
 
-data = [
-        1974,
+#include <iostream>
+using namespace std;
+
+int main(){
+    int a[] = {1974,
         1902,
         1356,
         1724,
@@ -200,33 +202,26 @@ data = [
         1852,
         1753,
         1743,
-        1551
-]
+        1551};
+    const int len = sizeof(a)/sizeof(int);
 
-solution = [];
-for num in data:
-    for num2 in data:
-        if num + num2 == 2020:
-            solution = [num, num2]
+    for(int i = 0; i < len - 1; i++){
+        for (int j = i+1; j < len; j++) {
+            if (a[i] + a[j] == 2020) {
+                cout << a[i]*a[j] << endl;
+            }
+        }
+    }
 
-#print(sum(solution))
-print(solution[0]*solution[1]);
 
-solution = []
+    for(int i = 0; i < len - 2; i++){
+        for (int j = i+1; j < len - 1; j++) {
+            for (int k = j+1; k < len; k++) {
+                if(a[i] + a[j] + a[k] == 2020){
+                    cout << a[i]*a[j]*a[k];
+                }
+            }
+        }
+    }
 
-data.sort(reverse=True)
-# print(data)
-
-i = 0
-for num in data:
-    i = len(data)-1
-    if num+data[i] < 2020:
-        for num2 in data:
-            if num + num2 + data[i] == 2020:
-                solution = [num, data[i], num2]
-                break
-        i = i-1
-    else:
-        continue
-print(sum(solution))
-print(solution[0]*solution[1]*solution[2])
+}
